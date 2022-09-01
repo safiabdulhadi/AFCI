@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gros formulaire</title>
+</head>
+
+<body>
+    <form  method="post">
+        <!-- Tout formulaire commence avec une balise form 
+            l'attribut action permet d'indiquer quel page traitera le formulaire.
+            vide il rechargera la même page. 
+            la méthode indique si le formulaire doit envoyer ses information en 
+            get ou post.
+            post sera utilisé pour cacher les informations transmise
+            alors que get les laissera visible dans l'adresse -->
+        <label for="prenom">Prénom :</label>
+        <!-- La balise label permet d'étiquetter notre champ. 
+            L'attribut for permet de sélectionner le champs portant 
+            le même id lorsque l'on clique sur le label -->
+        <br>
+        <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" autofocus
+        required>
+        <!-- input est la balise la plus classique des formulaires
+            Elle prend un attribut type (par défaut le text) -->
+        <!--! Un id doit être unique dans la page -->
+        <!-- placeholder permet de mettre un texte dans le champ qui s'effacera
+        quand l'utilisateur rentre des informations -->
+        <!-- autofocus selectionne le champ dès le chargement de la page -->
+        <hr>
+        <label for="birthday">Date de Naissance :</label>
+        <br>
+        <input type="date" name="birthday" id="birthday" disabled>
+        <!-- L'input de type date permet de selectionner une date -->
+        <!-- disabled desactive un champ -->
+        <hr>
+        <label for="color">Couleur favorite :</label>
+        <br>
+        <input type="color" name="colorFav" id="color">
+        <!-- Permet de selectionner une couleur -->
+        <hr>
+        <label for="email">Votre Email :</label>
+        <br>
+        <input type="email" name="email" id="email">
+        <!-- N'accepte que les emails -->
+        <hr>
+        <label for="pass">Votre mot de passe :</label>
+        <br>
+        <input type="password" name="pass" id="pass">
+        <!-- Cache le texte rentré -->
+        <hr>
+        <label for="cv">Quel est votre CV?</label>
+        <br>
+        <input type="file" name="cv" id="cv">
+        <!-- permet l'upload de fichier -->
+        <hr>
+        <label for="commentaire">Un commentaire peut être ?</label>
+        <br>
+        <textarea name="commentaire" id="commentaire" cols="30" rows="10"></textarea>
+        <!-- Permet de rentrer un texte plus grand qu'avec un simple input -->
+        <hr>
+        <fieldset>
+            <!-- fieldset permet de grouper plusieurs champs entre eux -->
+            <legend>Choisi ton langage préféré :</legend>
+            <!-- legend permet de titrer notre fieldset -->
+            <input type="radio" name="langage" id="html" checked>
+            <label for="html">HTML</label>
+            <br>
+            <input type="radio" name="langage" id="css">
+            <label for="css">CSS</label>
+            <br>
+            <input type="radio" name="langage" id="js">
+            <label for="js">Javascript</label>
+            <!-- L'input de type radio est le seul qui peut avoir le même nom qui revient -->
+        </fieldset>
+        <hr>
+        <fieldset>
+            <legend>Quels categories appréciez vous ?</legend>
+            <!-- Les checkbox permettent de cocher ou décocher des cases -->
+            <input type="checkbox" name="aventure" id="aventure" checked>
+            <!-- checked permet de selectionner par défaut le champ (radio ou checkbox) -->
+            <label for="aventure">Aventure</label>
+            <br>
+            <input type="checkbox" name="romantique" id="romantique">
+            <label for="romantique">Romantique</label>
+            <br>
+            <input type="checkbox" name="horreur" id="horreur">
+            <label for="horreur">Horreur</label>
+        </fieldset>
+        <hr>
+        <label for="repas">Choisi ton repas :</label>
+        <select name="repas" id="repas" multiple>
+            <!-- multiple permet de selectionner plusieurs éléments sur un select
+            ou alors sur un type file de charger plusieurs fichiers à la fois. -->
+            <!-- La balise select contient des options.
+            Ces options prennent un attribut value qui sera la valeur 
+            envoyé par le formulaire -->
+            <option value="pizza">Pizza !</option>
+            <option value="pasta">Pâtes !</option>
+            <option value="burger">Burger !</option>
+        </select>
+        <br>
+        <input type="submit" value="Valider !">
+        <!-- L'input de type submit permet de faire un bouton d'envoi du formulaire. -->
+        <input type="button" value="Effacer !">
+        <!-- Le type button fait un bouton sans effet -->
+    </form>
+
+</body>
+
+</html>

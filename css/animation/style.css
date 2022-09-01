@@ -1,0 +1,91 @@
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* On peut définir une animation via la @rule nommé @keyframes suivi du nom que l'on 
+souhaite donner à l'animation. */
+@keyframes cloud {
+    /* from ou 0% est le point de départ de l'animation */
+    from{
+        right: -30vw;
+        height: 5px;
+        width: 5px;
+    }
+    /* Entre le point de départ et le point d'arrivé de l'animation, on peut déclarer 
+    autant d'étape que souhaité, css calculera comment faire le lien entre ces différentes 
+    étapes. (par exemple ici, on dit qu'à 30% de l'animation, l'élément doit être à top: 100vh;) */
+    30%{
+        top: 100vh;
+    }
+    70%{
+        top: 100px;
+    }
+    90%{
+        height: 50px;
+        width: 50px;
+    }
+    /* to ou 100% est le point d'arrivé de l'animation. */
+    to{
+        right: 100vw;
+        height: 250px;
+        width: 250px;
+    }
+}
+@keyframes darkCloud {
+    0%{
+        background-color: grey;
+    }
+    50%{
+        background-color: white;
+    }
+    100%{
+        background-color: grey;
+    }
+}
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+.sky{
+    height: 100%;
+    background: linear-gradient(to right, #904E95, #E96443);
+}
+.cloud{
+    position: absolute;
+    top: 50%;
+    /* left: 50%; */
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    /* Permet d'indiquer le nom du @keyframes à utiliser */
+    animation-name: cloud;
+    /* En combien de temps doit se dérouler la totalité de l'animation */
+    animation-duration: 10s;
+    /* Si l'animation doit se jouer dans le sens normal, inverse, ou bien alterner */
+    animation-direction: normal;
+    /* Le rythme de l'animation doit il varier */
+    animation-timing-function: ease-in;
+    /* Un délai avant de commencer l'animation */
+    animation-delay: 0.5s;
+    /* Combien de fois doit se jouer l'animation */
+    animation-iteration-count: infinite;
+}
+.cloud div{
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    background-color: whitesmoke;
+    /* animation permet de regrouper toute les propriétés d'animation */
+    animation: darkCloud 5s linear infinite;
+}
+.part1{
+    top: -35%;
+}
+.part2{
+    left: 35%;
+}
+.part3{
+    left: -35%;
+}

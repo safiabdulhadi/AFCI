@@ -1,0 +1,61 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+main{
+    /* On place le parent en display grid pour 
+    affecter les enfants */
+    display: grid;
+    /* grid-template-columns permet d'indiquer
+    combien de colonne compte notre grille.
+    chaque valeur doit être séparé d'un espace.
+    la fonction repeat() peut être utilisé pour répéter plusieurs fois la même valeur */
+    grid-template-columns: repeat(5, 15%);
+    /* Avec le même fonctionnement que précédement, on peut définir un nombre de ligne */
+    grid-template-rows: 20vh auto 200px 100px;
+    /* Si la largeur des colonnes de notre tableau est inferieur à la largeur
+    du conteneur, on peut espacer les colonnes via justify content */
+    justify-content: space-evenly;
+    /* On peut aussi suivant les même règles aligner la grille verticalement
+    avec align-content */
+}
+main > div:nth-child(1){
+    background-color: lightgreen;
+    /* J'indique à ma div 1 de commencer à la colonne 2 et de finir à la 5  */
+    grid-column-start: 2;
+    grid-column-end: 5;
+    /* J'indique à ma div 1 de commencer à la ligne 1 et de finir à la 3 */
+    grid-row-start: 1;
+    grid-row-end: 3;
+    /* ! ATTENTION on parle ici des lignes et colonnes qui séparent les différentes cases */
+}
+main > div:nth-child(2){
+    background-color: blueviolet;
+    /* On peut résumer les colonnes start et end avec grid-column */
+    grid-column: 1/2;
+    /* Et pareillement on peut résumer les lignes avec grid-row */
+    grid-row: 1/2;
+}
+main > div:nth-child(3){
+    background-color: deeppink;
+    /* grid area permet de résumer les 4 à la fois en un seul avec :
+        row-start / column-start / row-end / column-end */
+    grid-area: 1 / 5 / 4 / 6;
+}
+main> div:nth-child(4){
+    background-color: olive;
+    /* Plutôt qu'indique où se trouve la fin, 
+    on peut indiquer avec le mot clef span combien de case la div doit prendre */
+    grid-row: 2/ span 3;
+    grid-column: 1/ span 2;
+}
+main> div:nth-child(5){
+    background-color: violet;
+    /* On peut volontairement ou involontairement faire se superposer des cases. */
+    grid-row: 2/ span 2;
+    grid-column: 2/span 2;
+}

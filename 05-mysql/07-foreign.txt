@@ -1,0 +1,46 @@
+Si beaucoup de tables sont indexé par une "CLEF PRIMAIRE", on trouvera aussi ce qu'on appelle des 
+"CLEF étrangères" ou "FOREIGN KEY". Celles ci servent de lien entre deux tables.
+Pour faire un exemple, créons une nouvelle table.
+
+[CREATE TABLE messages (
+    id int NOT NULL AUTO_INCREMENT,  
+    content text NOT NULL, 
+    createdAt datetime DEFAULT CURRENT_TIMESTAMP,
+    UserId int NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE(id),
+    CONSTRAINT fk_userId FOREIGN KEY (UserID) REFERENCES users(id)
+);]
+"CONSTRAINT" permet d'indiquer un nom donné à notre "contrainte", (optionnelle mais le nom par défaut peut être compliqué)
+"FOREIGN KEY" indique quel est la colonne de notre table qui sera concerné,
+"REFERENCES" indique quel table et quel colonne est lié à cette clef étrangères.
+
+Ajoutons un message à notre table :
+[INSERT INTO messages (content, userID) VALUES ("bla bla bla bla", (SELECT id FROM users WHERE username = "Basile"));]
+
+Maintenant si j'essaye de supprimer notre utilisateur : 
+[DELETE FROM users WHERE username = "Basile";]
+Je vais obtenir une erreur m'empêchant la suppression de cet utilisateur.
+Les clefs étrangères peuvent servir de sécurité, pour ne pas supprimer des données dont on a besoin
+dans une autre table.
+
+Mais ce n'est pas ce que je veux ici, supprimons cette "Contrainte":
+[ALTER TABLE messages DROP FOREIGN KEY fk_userId;]
+On utilisera le nom donné à notre "contrainte".
+
+Et ajoutons en une nouvelle : 
+[ALTER TABLE messages ADD CONSTRAINT fk_userId FOREIGN KEY (UserID) REFERENCES users(id) ON DELETE CASCADE;]
+"ON DELETE" permet d'indiquer ce qui doit être fait en cas de suppression. 
+    On peut aussi utiliser "ON UPDATE" pour indiquer quoi faire en cas de mise à jour.
+"CASCADE" indique que le changement doit être répercuté sur cette table.
+    Les autres options sont :
+        "SET NULL" pour mettre le champ à "NULL",
+        "NO ACTION" ne rien faire,
+        "RESTRICT" la valeur par défaut empêchant le changement.
+
+Maintenant si je retente de supprimer mon utilisateur :
+[DELETE FROM users WHERE username = "Basile";]
+Il disparaît et tout ses messages avec.
+
+Utiliser "RESTRICT", "CASCADE", "SET NULL" dépend vraiment du type de BDD, du projet, 
+de l'entreprise, de la situation.

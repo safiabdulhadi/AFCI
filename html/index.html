@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Indique le type d'encryptage de la police -->
+    <meta charset="UTF-8">
+    <!-- rendre compatible les vieux navigateur utilisant encore IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Indique que le viewport doit avoir une largeur équivalente à celle de 
+    l'appareil et cela sans zoom. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le titre de la page qui s'affichera en onglet ou favoris. -->
+    <title>Ma première page !</title>
+    <!-- Indique l'auteur de la page -->
+    <meta name="author" content="Nolwenn WEBER-MARQUISET">
+    <!-- Description de la page, peut parfois être utilisé par les moteurs de 
+    recherche -->
+    <meta name="description" content="Une super page avec les bases du HTML">
+    <!-- Les mots clefs que les moteurs de recherche pourront utiliser pour retrouver
+    votre page. Important pour le référencement. -->
+    <meta name="keywords" content="html, head, balises, meta tag">
+    <!-- La balise link permet de lier un fichier à la page.
+    ici on lui indique dans l'attribut rel que c'est un fichier pour l'image de
+    raccourci. 
+    Dans l'attribut type on lui indique le type mime de l'image.
+    Et dans l'attribut href on lui indique le chemin vers le fichier -->
+    <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+<header>
+    <!-- balise de type block sans autre effet -->
+    <nav>
+        <!-- balise de type block sans autre effet -->
+        <ul>
+            <!-- unordered list, balise de type block
+            qui permettra la création d'une liste -->
+            <li>
+                <!-- list item -->
+                <a href="./tableau.html">Tableaux</a>
+                <!-- La balise a contient un attribut href indiquant le chemin
+                vers lequel rediriger l'utilisateur quand il clique -->
+            </li>
+            <li> 
+                <a href="https://www.google.fr/search?q=pizza" target="_blank">Google</a>
+                <!-- L'attribut target="_blank" permet d'ouvrir le lien dans un nouvel
+                onglet, cela nous permet de garder l'utilisateur sur notre site.  -->
+            </li>
+        </ul>
+        <ol>
+            <!-- ordered list -->
+            <li><a href="#video">Video</a></li>
+            <li>
+                <a href="#footer">Footer</a>
+            </li>
+        </ol>
+    </nav>
+</header>
+<main>
+    <!-- balise de type block sans autre effet -->
+    <h1>
+        <!-- les balises de type block h sont des titres
+        allant du grand au plus petit h1 à h6 -->
+        Super titre !
+    </h1>
+    <section>
+        <!-- balise de type block avec pour règle
+        qu'elle devrait contenir un titre -->
+        <h2>Grosse section !</h2>
+        <article>
+            <!-- Un block qui devrait contenir un titre -->
+            <h3>Article Brillant ! </h3>
+            <p>
+                <!-- Un bloc qui ne peut contenir que 
+                des balises inline. -->
+                <strong> 
+                    Lorem ipsum dolor sit amet
+                    <!-- Met en gras le texte -->
+                </strong> consectetur adipisicing elit. 
+                Qui amet officiis natus veritatis cupiditate 
+                tenetur ea quod animi, assumenda excepturi totam sapiente, 
+                <!-- permet de sauter des lignes --><br>
+                <u>
+                    <!-- Permet de souligner du texte -->
+                    architecto minus accusantium, provident sint neque in facilis.
+                </u>
+                Quas debitis dolore quae porro. Eaque consectetur quisquam neque 
+                enim mollitia deleniti iusto officia aliquam beatae totam ea quas 
+                similique at quod maiores autem, sit adipisci dolor! Autem, itaque qui.
+            </p>
+            <hr> <!-- créer une ligne en travers de la page -->
+            <p>
+                <!-- Un bloc qui ne peut contenir que 
+                des balises inline. -->
+                <em>
+                    <!-- em est là pour indiquer que ce texte en italique est important -->
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui amet officiis natus veritatis cupiditate tenetur ea quod animi, assumenda excepturi totam sapiente, architecto minus accusantium, provident sint neque in facilis.
+                </em>
+                <i>
+                    <!-- i est là pour indiquer que ce texte en italique est une citation -->
+                    Quas debitis dolore quae porro. Eaque consectetur quisquam neque enim mollitia deleniti iusto officia aliquam beatae totam ea quas similique at quod maiores autem, sit adipisci dolor! Autem, itaque qui.
+                </i>
+            </p>
+            <p>
+                <!-- Un bloc qui ne peut contenir que 
+                des balises inline. -->
+                Aimez vous le <abbr title="HyperText Markup Language">
+                    HTML
+                    <!-- abbr permet d'indiquer la signification d'une abbréviation -->
+                </abbr> ?
+            </p>
+            <p>
+                <!-- Un bloc qui ne peut contenir que 
+                des balises inline. -->
+                <img src="./favicon/android-chrome-192x192.png" alt="image d'extraterrestre">
+                <!-- la balise image prend un attribut src qui indique le chemin vers l'image
+                et un attribut alt qui indique le texte à afficher si l'image ne peut pas 
+                s'afficher. -->
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui amet officiis natus veritatis cupiditate tenetur ea quod animi, assumenda excepturi totam sapiente, architecto minus accusantium, provident sint neque in facilis.
+                Quas debitis dolore quae porro. Eaque consectetur quisquam neque enim mollitia deleniti iusto officia aliquam beatae totam ea quas similique at quod maiores autem, sit adipisci dolor! Autem, itaque qui.
+            </p>
+        </article>
+        <article>
+            <h4>article annecdotique</h4>
+        </article>
+        <article>
+            <h5>article ridicule</h5>
+        </article>
+        <article>
+            <h6>article invisible</h6>
+        </article>
+    </section>
+    <section id="video">
+        <h2>Audio et Vidéo</h2>
+        <video src="./video.mp4" width="500" controls loop muted autoplay
+        poster="./favicon/favicon-32x32.png"></video>
+        <!-- La balise video prend en attribut :
+            src à qui on donne le chemin de vers le fichier
+            width pour attribuer une largeur à la video
+            controls pour afficher les boutons 
+            muted permet de couper le son
+            loop de faire tourner la vidéo en boucle
+            autoplay de lancer automatiquement la vidéo 
+            preload qui permet de télécharger les informations de la vidéo 
+                avant de la lancer
+            poster permet de mettre une miniature en lui donnant le chemin vers une 
+            image.
+            -->
+            <video controls width="50">
+                <!-- En intégrant les sources vidéo de cette façon, si le 
+                navigateur ne peut pas en lire une, il passera à la suivante
+                et en dernier recours affichera le message -->
+                <source src="./video.mp4" type="video/mp4">
+                <source src="./video.wav" type="video/x-wav">
+                <source src="./video.avi" type="video/x-msvideo">
+                <p>Votre navigateur ne supporte pas les vidéo html5</p>
+            </video>
+            <audio src="son.mp3" controls></audio>
+            <audio controls>
+                <source src="" type="">
+                <source src="" type="">
+                <source src="" type="">
+            </audio>
+    </section>
+</main>
+<footer id="footer" class="superDiv class2 grosseClass">
+    <!-- balise de type block sans autre effet -->
+    <iframe src="./formulaire.html" width="800" height="500"></iframe>
+    <!-- L'iframe permet d'intégrer une page dans une autre. -->
+    <div class="superDiv">
+        <span></span>
+    </div>
+    <code>
+        <!-- Aucun effet mais est dédié à l'affichage du code -->
+    </code>
+    <pre>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Consectetur sint, dolor sequi consequatur maxime inventore iure 
+blanditiis nemo aliquam magnam. Possimus quam beatae architecto? 
+                                    Dolorem minima sequi sit dolor doloremque!
+    </pre>
+</footer>
+</body>
+
+</html>

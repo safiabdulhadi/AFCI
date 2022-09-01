@@ -1,0 +1,43 @@
+body{
+    background-color: bisque;
+    margin: 0;
+}
+h1, h2{
+    text-align: center;
+}
+article{
+    margin: 1rem 10px;
+    border: 1px solid grey;
+    padding: 0.5rem;
+}
+@media screen and (min-width: 500px){
+    body{
+        background-color: lightgreen;
+    }
+    article{
+        display: inline-block;
+        width: 45%;
+    }
+}
+@media screen and (min-width: 900px) {
+    body{
+        background-color: lightblue;
+    }
+    article{
+        width: 30%;
+    }
+}
+/* 
+en pc first on commence du plus grand.
+@media screen and (max-width: 900px)
+@media screen and (max-width: 500px)
+*/
+@media print{
+    /* En cas d'impression */
+    body{
+        background-color: red;
+    }
+    footer{
+        display: none;
+    }
+}

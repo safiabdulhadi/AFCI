@@ -1,0 +1,22 @@
+label[for="burger"]{
+    font-size: 2.5rem;
+}
+ul, #burger{
+    display: none;
+}
+#burger:checked + ul{
+    display: block;
+}
+@media screen and (min-width: 900px){
+    label[for="burger"]{
+        display: none;
+    }
+    ul{
+        display: block;
+    }
+    li{  
+        display:  inline-block;
+        width: 17vw;
+        text-align: center;
+    }
+}

@@ -1,0 +1,38 @@
+ul{
+    /* Place le parent en mode flex */
+    display: flex;
+    /* Indique l'axe principal */
+    flex-direction: row;
+    /* Place les enfants sur l'axe principal */
+    justify-content: space-between;
+    /* Permet ou non la création de nouvelles lignes quand la place manque */
+    flex-wrap: wrap;
+    height: 8rem;
+    /* Place les enfants sur l'axe secondaire */
+    align-items: center;
+    border: 1px solid black;
+}
+li{
+    width: 40vw;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.51);
+    background-color: brown;
+    flex-grow: 1;
+    margin: 5px;
+}
+li:hover{
+    flex-grow: 2;
+}
+section{
+    display: flex;
+    /* fusion de flex direction et wrap */
+    flex-flow: column wrap;
+    height: 200px;
+}
+article{
+    width: 40%;
+    background-color: aquamarine;
+}
+section article:nth-of-type(3){
+    order: -1;
+}

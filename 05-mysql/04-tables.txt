@@ -1,0 +1,77 @@
+
+#--------------------------------------------------------------------------------------------#
+#--------------------------------Gestion des tables------------------------------------#
+#--------------------------------------------------------------------------------------------#
+Quand on a notre bdd, et bien il nous reste à créer des tables.
+Prenons un classique, la table "user", une table qui contiendra tous nos utilisateurs.
+Une table est un tableau dont chaque ligne est une nouvelle entrée, donc ici, chaque 
+ligne (row) de notre table "user" sera un nouvel utilisateur.
+[CREATE TABLE users (ID int, username varchar(50), email varchar(255), password text, active bool, createdAt datetime);]
+    Voyons cette ligne en détail :
+    "CREATE TABLE" est assez explicite, puis "users" est le nom de ma table, 
+    ce que l'on trouve entre les parenthèses sont les colonnes de mon tableau.
+    chaque colonne a un nom suivi de son type, on verra les types principaux ici 
+    mais vous pourrez trouvez tous les types ici par exemple :
+    - https://www.w3schools.com/mysql/mysql_datatypes.asp
+    On reviendra dessus mais la colonne "ID" est présente sur une majorité de table,
+    servant de repère et d'index à nos lignes. Ici on lui donne le type "int" qui 
+    représente un nombre entier.
+    puis "username" qui a le type "varchar(50)" cela indique un string de 50 caractère max.
+    Puis "email" qui est de type "varchar(255)" 255 est la taille maximum du varchar.
+    le champ "password" est de type "text", un string avec une limite bien plus grande.
+    (utile car les mdp hashés peuvent être bien plus grand que leur version de base.)
+    le champ "active" est de type "bool", un boolean, en bdd il sera représenté par 1 ou 0;
+    puis "createdAt" est de type "datetime" il prendra donc la date et l'heure.
+
+Cela dit, on a oublié plein de choses dans cette requête SQL. On va donc supprimer 
+cette table et la refaire.
+[DROP TABLE users;]
+Puis nous allons ajouter quelques paramètres :
+[CREATE TABLE users (
+    ID int NOT NULL AUTO_INCREMENT, 
+    username varchar(50) NOT NULL, 
+    email varchar(255) NOT NULL, 
+    password text NOT NULL, 
+    active bool DEFAULT 0, 
+    createdAt datetime DEFAULT CURRENT_DATE(),
+    PRIMARY KEY (ID),
+    UNIQUE(ID),
+    UNIQUE(email)
+);]
+Que voyons nous de nouveau ici ? 
+"NOT NULL" apparaît plusieurs fois, il indique que chaque entrée de ce champ doit être 
+rempli, elle ne peut pas être vide.
+"AUTO_INCREMENT" qui est sur l'"id" indique que ce champ nombre doit si aucune donnée ne lui 
+est fourni augmenter par lui même de 1 à chaque nouvelle entrée.
+"DEFAULT" permet de donner une valeur par défaut si jamais rien ne lui est donnée.
+"CURRENT_DATE()" est une fonction qui va aller chercher la date acutelle.
+"PRIMARY KEY(ID)" indique que le champ "ID" doit être la "CLEF PRIMAIRE" de notre table.
+    Cela signifie que c'est ce champ qui servira à indexer nos lignes. c'est celui qui 
+    identifiera chacune de nos entrées.
+"UNIQUE()" apparaît deux fois et indique que le champ entre parenthèse doit être "UNIQUE"
+    C'est à dire que celui ci ne doit pas apparaître plus d'une fois dans la table.
+
+Je peux vérifier la structure de ma table avec :
+[SHOW CREATE TABLE users;]
+Il m'affichera la requête permettant la création de ma table.
+si maintenant je fais :
+[SHOW TABLES;]
+Je verrais la liste des tables contenue dans ma BDD actuelle.
+
+Mais zut, il se trouve que je me suis trompé dans ma table ! 
+J'ai mit "CURRENT_DATE()" mais c'est un champ "datetime" hors je ne vais donc 
+obtenir que la date et non l'heure qui sera par defaut à 00:00:00. 
+je pourrais certe encore une fois tout supprimer puis la reconstruire à zéro, 
+mais ça serait casse pied et si on a déjà des données dans ma table, 
+je perdrais tout. heureusement on a une solution :
+[ALTER TABLE users MODIFY COLUMN createdAt datetime DEFAULT CURRENT_TIMESTAMP;]
+"ALTER TABLE" indique que je souhaite modifier une table, puis j'indique laquelle.
+"MODIFY COLUMN" indique que je souhaite modifier une des colonnes.
+    J'indique alors laquelle puis je lui donne ses nouvelles caractéristiques.
+
+Autre changement possible, finalement je veux connaître la date de naissance de mon utilisateur :
+[ALTER TABLE users ADD birthday date NOT NULL;]
+"ADD" après notre "ALTER TABLE" permet d'ajouter une nouvelle colonne.
+Finalement l'âge ne me convient pas :
+[ALTER TABLE users DROP COLUMN birthday;]
+"DROP COLUMN" nous permet de supprimer une de nos colonnes.

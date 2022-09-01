@@ -1,0 +1,112 @@
+@use "liste";
+// @use permet d'importer des fichier partial (qui commencent par _) 
+// @use doit être écrit avant toute autre règles.
+// Les fichiers partials ne sont pas compilé en css, sauf si importé.
+h1{
+    color: red;
+}
+h2{
+    color: grey;
+    background-color: black;
+}
+/* ---------- Nesting ------- */
+// SCSS apporte le nesting, (nidification) qui permet d'inclure un selecteur dans un autre.
+// par exemple ici on cible le h2 qui se trouve dans section.sass
+section.sass{
+    background-color: aquamarine;
+    h2{
+        background-color: brown;
+        span{
+            font-style: italic;
+        }
+        // Le mot clef & fait référence au parent. Ici &:hover sera compilé en h2:hover
+        &:hover{
+            transform: scale(1.5);
+        }
+    }
+}
+//------------- Variable ----------
+// Les variables scss sont plus simple d'utilisation, et n'apparaissent pas le code css.
+// Elles doivent commencer par un $
+$colorMain : violet;
+
+.scss{
+    background-color: $colorMain;
+}
+/* ----------------- Extends -------------- */
+//extends permet de reprendre un morceau de css et de le réutiliser à plusieurs endroits.
+// Par exemple ici je nomme un morceau de code avec "%" suivi du nom.
+%flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+//Et j'utilise @extend suivi du nom de mon code pour qu'il soit intégré à la fois dans mon header et dans mon ul.
+header{
+    @extend %flexCenter;
+    // Je peux aussi @extend une classe afin de copier le code que j'ai appliqué à cette classe.
+    @extend .sass;
+}
+main{
+    ul{
+        @extend %flexCenter;
+    }
+}
+/* ---------- MIXIN ------------- */ 
+// Pareillement au @extend, @mixin permet de faire des morceaux de code réutilisable.
+// La principale différence c'est qu'ici on pourra ajouter des paramètres pour faire varier nos @mixin
+// dans les parenthèses de mon mixin, je crée autant de variable que voulu que je pourrais utiliser dans ma mixin.
+@mixin absol($top:50%, $l:50%, $tr1:-50%, $tr2:-50%) {
+    //Si je crée un variable simple ($test) alors quand je vais appeler ma mixin, je devrais lui donner autant de valeur que de variable.
+    // Par contre si je donne à ma variable une valeur par défaut ($test:red) alors, je peux ne renseigner aucune info à ma variable.
+    // Elle prendra alors sa valeur par défaut. Si au contraire je lui donne une valeur, cela remplacera celle par défaut.
+    position: absolute;
+    top: $top;
+    left: $l;
+    transform: translate($tr1, $tr2);
+}
+.copy{
+    font-size: 4rem;
+    background-color: mediumpurple;
+    // Pour appeler une mixin, j'utilise @include 
+    // Si ma mixin à plusieurs paramètre, la première valeur ira au premier paramètre et ainsi de suite.
+    @include absol(90%, 90%);
+}
+.menu{
+    font-size: 3rem;
+    background-color: rgb(216, 112, 112);
+    // Je peux aussi appeler directement le nom d'un paramètre pour le changer si je ne souhaite pas changer les précédents.
+    @include absol(5%, 5%, $tr2:100%);
+}
+/*--------------- FONCTIONS -----------------*/ 
+// Une fonction est un code qui va être appeler afin d'effectuer des opérations et rendre une nouvelle valeur.
+// Ici on donne une couleur à notre fonction
+@function compLight($color){
+    // Elle va trouver la couleur complémentaire à celle donnée en paramètre
+    $comp: complement($color);
+    // légèrement l'éclaircir
+    $light: lighten($comp, 5%);
+    // Puis nous rendre le résultat.
+    @return $light;
+}
+
+.copy{
+    color: compLight(mediumpurple);
+}
+/* ------------- Conditions ------------------*/
+@mixin radius($w,$h) {
+    width: $w;
+    height: $h;
+    @if $w == $h{
+        border-radius: 50%;
+    }
+    @else{
+        border-radius: 5px;
+    }
+}
+.copy{
+    @include radius(5rem,5rem);
+}
+.menu{
+    @include radius(10rem,5rem);
+}

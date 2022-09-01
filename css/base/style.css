@@ -1,0 +1,97 @@
+@font-face {
+    /* font-face permet l'import de police d'écriture */
+    /* font-family permet de nommer sa police */
+    font-family: "BlakaHollow";
+    /* src permet d'indiquer le lien vers le fichier. */
+    src: url("./BlakaHollow-Regular.ttf");
+}
+:root{
+    /* Les variables CSS permettent d'enregistrer 
+    une valeur, dans un nom que l'on pourra réutiliser 
+    à plusieurs endroits de notre code.
+    Leurs noms doivent commencer par "--"
+    Pour les utiliser quelque part on utilisera 
+    la fonction var() à laquelle on donnera le nom de 
+    la variable à afficher */
+    --mainBgColor: #ABCDEF;
+    --mainTextColor: #b68f68;
+    --divTextSize: 0.8rem;
+}
+body{
+    background-color: aquamarine;
+}
+.target1{
+    background-color: rgb(0,0,0);
+    /* rgb prend trois valeurs entre 0 et 255 
+    représentant la quantité de rouge, vert et bleu */
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    /* Pour utiliser une police importé, 
+    Il suffit d'utiliser le nom donné plus haut */
+    font-family: BlakaHollow;
+}
+.target2{
+    background-color: rgb(93, 75, 142);
+    /* hsl est un cercle chromatique dont on indique
+    le degré en premier paramètre, puis la saturation et 
+    la brillance en pourcentage */
+    color: hsl(280, 50%, 50%);
+    font-size: 1cm;
+}
+.target3{
+    background-color: #000000;
+    /* On peut aussi écrire un couleur en hexadécimal
+    dans ce cas les deux premier caractères correspondent
+    au rouge, puis les deux suivant au vert et ensuite
+    le bleu */
+    color: #FFFFFF;
+    font-size: 2em;
+}
+.target4{
+    background-color: #FF0000;
+    /* rgba et hsla prennent un 4ème paramètre 
+    qui est un chiffre compris entre 0 et 1
+    indiquant la transparence */
+    color: rgba(20, 169, 236, 0.9);
+    font-size: 2rem;
+}
+.target5{
+    background-color: rgba(9, 121, 121, 0.647);
+    font-size: 10vw;
+}
+.target6{
+    font-size: 10vh;
+}
+.target7{
+    font-size: 50%;
+}
+.target8{
+    background-color: var(--mainBgColor);
+    color: var(--mainTextColor);
+    font-size: var(--divTextSize);
+}
+.target9{
+    background-color: var(--mainBgColor);
+    color: var(--mainTextColor);
+    font-size:  var(--divTextSize);
+}
+.target10{
+    background-color: var(--mainBgColor);
+    color: var(--mainTextColor);
+    font-size: var(--divTextSize);
+}
+div{
+    /* Une classe à une plus grande importance qu'une 
+    balise en css, donc les élément selectionné précédement
+    ne sont pas modifié par ce selecteur */
+    background-color: chartreuse;
+}
+.target1 ~ div{
+    /* Plus on sera précis dans notre selecteur, usant
+    des parents, frères, id, classes, plus sa priorité
+    sera grande. */
+    background-color: blueviolet;
+}
+div{
+    background-color: bisque !important;
+}

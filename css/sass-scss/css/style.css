@@ -1,0 +1,91 @@
+ul {
+  background-color: cornflowerblue;
+}
+ul .truc1 {
+  font-size: 30px;
+}
+ul .truc2 {
+  font-size: 40px;
+}
+ul .truc3 {
+  font-size: 50px;
+}
+ul .truc4 {
+  font-size: 60px;
+}
+ul .truc5 {
+  font-size: 70px;
+}
+
+h1 {
+  color: red;
+}
+
+h2 {
+  color: grey;
+  background-color: black;
+}
+
+/* ---------- Nesting ------- */
+section.sass {
+  background-color: aquamarine;
+}
+section.sass h2 {
+  background-color: brown;
+}
+section.sass h2 span {
+  font-style: italic;
+}
+section.sass h2:hover {
+  transform: scale(1.5);
+}
+
+.scss {
+  background-color: violet;
+}
+
+/* ----------------- Extends -------------- */
+main ul, header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---------- MIXIN ------------- */
+.copy {
+  font-size: 4rem;
+  background-color: mediumpurple;
+  position: absolute;
+  top: 90%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+}
+
+.menu {
+  font-size: 3rem;
+  background-color: rgb(216, 112, 112);
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  transform: translate(-50%, 100%);
+}
+
+/*--------------- FONCTIONS -----------------*/
+.copy {
+  color: #c2e084;
+}
+
+/* ------------- Conditions ------------------*/
+.copy {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+
+.menu {
+  width: 10rem;
+  height: 5rem;
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=style.css.map */

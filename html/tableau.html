@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super tableaux !</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Accueil</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <table>
+            <!-- La balise table permet la création de tableaux -->
+            <thead>
+                <tr>
+                    <!-- thead permet de faire une entête au tableau -->
+                    <th colspan="2">
+                        <!-- th permet d'avoir des cases en gras et centré -->
+                        couleurs chaudes
+                    </th>
+                    <th colspan="2">
+                        couleurs froides
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <!-- tr signifie table row, donc une ligne du tableau -->
+                <td>jaune</td>
+                <!-- Chaque td (table data) est une case du tableau -->
+                <td>rouge</td>
+                <td>bleu</td>
+                <td>vert</td>
+            </tr>
+            <tr>
+                <td>banane</td>
+                <td>tomate</td>
+                <td>bleuet</td>
+                <td>concombre</td>
+            </tr>
+            <tfoot>
+                <!-- pied de page du tableau -->
+                <tr>
+                    <td>Commentaire</td>
+                    <td colspan="3">ça donne faim tout ça.</td>
+                    <!-- colspan permet de fusionner une case sur plusieurs colonnes -->
+                </tr>
+            </tfoot>
+        </table>
+    </main>
+</body>
+
+</html>

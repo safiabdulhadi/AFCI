@@ -1,0 +1,55 @@
+Une fois mysql installé (dans notre cas via Xampp) on pourra se rendre dans une 
+invite de commande (terminal) et nous rendre dans le dossier de mysql 
+(ici : c:/xampp/mysql/bin) ou alors ajouter ce même dossier à nos "path"
+dans les "variables d'environnement".
+
+Cela fait on pourra lancer la commande 
+[mysql -u root -p]
+Elle indique d'utiliser mysql puis de se connecter avec un utilisateur nommé "root"
+et qu'il faudra entrer un mot de passe. 
+(sous windows, le mot de passe par défaut de l'utilisateur root est "" rien du tout)
+
+#--------------------------------------------------------------------------------------------#
+#--------------------------------GESTION DES UTILISATEURS------------------------------------#
+#--------------------------------------------------------------------------------------------#
+C'est donc ici que seront rentré nos premières commandes.
+On va commencer par créer un nouvel utilisateur plus sécurisé :
+[CREATE USER "Nolwenn"@"localhost" IDENTIFIED BY "chaussette";]
+    - Convention : Les mots clef utilisé en sql sont écrit en majuscule.
+    - Règle : Chaque ligne de code est terminé par un ";".
+    Ici on trouve le mot clef "CREATE" qui indique que l'on va créer quelque chose
+    suivi de "USER" qui indique que l'on crée un utilisateur.
+    puis entre guillemet le nom de l'utilisateur, suivi de "@" puis de l'hôte de 
+    l'utilisateur, nous travaillons en local, donc "localhost" sera suffisant.
+    (dans un cas contraire cela pourrait être une adresse IP).
+    puis on indique avec "IDENTIFIED BY" le mot de passe qui sera utilisé entre guillemet.
+
+Actuellement notre utilisateur n'a aucun droit, si il se connecte, il ne pourra rien faire.
+On va alors lui donner des droits :
+[GRANT ALL PRIVILEGES ON * . * TO "Nolwenn"@"localhost";]
+
+Ici on indique que l'on va donner tous les droits "GRANT ALL PRIVILEGES" sur "ON" 
+toute les bases de données "*" et toute les tables ".*" à "TO" notre utilisateur.
+Une fois tout les privileges paramétré il est bon de recharger le tout avec :
+[FLUSH PRIVILEGES;] 
+(cela peut marcher sans, mais il vaut mieux faire les choses bien)
+    Ici on est dans un cas très précis où on veut pouvoir accèder à tout, mais dans le 
+    cas d'une entreprise on donnera sûrement accès à nos utilisateurs qu'à certaines
+    BDD, certaines tables ou encore certains droits. Par exemple :
+[GRANT CREATE, DROP, DELETE ON truc . * TO "Maurice"@"localhost";]
+(On donne le droit de créer, de jeter ou de supprimer sur toute les tables de la bdd "truc")
+    Pareillement on peut retirer des droits avec :
+[REVOKE DROP, DELETE ON truc . * FROM "Maurice"@"localhost";]
+(On retire les droits de jeter et supprimer sur toute les tables de la bdd "truc")
+# Selon la version de mysql, cela peut entrainer des erreurs de droit d'accès si ce n'est pas root
+On peut vérifier les droits d'un utilisateur avec :
+[SHOW GRANTS FOR "Maurice"@"localhost";]
+Le mot clef "SHOW" indique que l'on veut voir quelque chose.
+Et supprimer un utilisateur avec :
+[DROP USER "Maurice"@"localhost";]
+On souhaite jeter "DROP" un utilisateur.
+Pour changer d'utilisateur on quittera le compte courant et on se reconnectera avec un autre.
+[quit;]
+Pour modifier un mdp existant :
+[ALTER USER "Maurice"@"localhost" IDENTIFIED BY "machin";]
+le mot clef "ALTER" signifie que l'on va modifier quelque chose.

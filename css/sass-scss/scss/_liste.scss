@@ -1,0 +1,21 @@
+// $li... va permettre de créer un tableau (une liste) de tous les paramètres donnée.
+@mixin liste($li...) {
+    // Cette ligne permet de créer des boucles, ici on dit que pour une valeur rangé dans la variable $i qui commence à 0.
+    // On va répéter l'instruction suivante jusqu'à ce que $i atteigne la longueur de notre liste (ici 5 non inclu)
+    @for $i from 0 to length($li){
+        // debug permet d'afficher un message ou une valeur dans le terminal. ici la valeur de $i à chaque boucle.
+        //@debug $i;
+        // #{} permet d'afficher la valeur d'une variable dans le css.
+        // nth() permet de selectionner l'élément d'une liste. par exemple à la première répétition $i vaut 0+1 donc on affiche le premier 
+        // élément de notre liste (donc .truc1)
+        #{nth($li, $i+1)}{
+            font-size: 30px + $i*10;
+        }
+    }
+    //@warn "Attention !"; permet d'afficher une alerte jaune dans le terminal.
+    //@error "Ne pas faire ça !"; permet d'arrêter la compilation et d'afficher un message d'erreur
+}
+ul{
+    background-color: cornflowerblue;
+    @include liste(".truc1",".truc2", ".truc3", ".truc4", ".truc5");
+}

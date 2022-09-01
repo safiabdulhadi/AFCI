@@ -1,0 +1,89 @@
+*, ::after, ::before{
+    /* On met tout les paddings et margin à 0 pour placer les éléments exactement
+    comme on le souhaite, sans subir les valeurs par défaut. */
+    margin: 0;
+    padding: 0;
+    /* Par défaut, la largeur d'un élément ne prend en compte que la boîte de contenu
+    En le paramétrant en border-box, la largeur d'un élément prend en compte jusqu'à
+    sa bordure. */
+    box-sizing: border-box;
+}
+header{
+    background-color: aqua;
+    /* Background-image permet de mettre une image en fond d'élément */
+    background-image: url(./sunset-g2b23d74c4_640.jpg);
+    /* Interdit à l'image de se répéter */
+    background-repeat: no-repeat;
+    /* Comment se positionne l'image sur le fond */
+    background-position: bottom;
+    /* Quelle taille doit prendre l'image  */
+    background-size: cover;
+}
+main{
+    background-color: blueviolet;
+}
+article{
+    /* paramètre la largeur de l'élément */
+    width: 49%;
+    /* Modifie le mode de placement de l'élément.
+    Ici il reste un block mais qui peut se mettre en ligne si il a la place */
+    display: inline-block;
+    /* On peut paramétrer la bordure point par point avec tout un tas de paramètre
+    Ou alors utiliser border qui permet de résumer tout cela à un seul. */
+    border: 5px solid black;
+    /* On indique à nos articles qu'ils ont un espacement entre la bordure et le 
+    contenu */
+    padding: 20px;
+    /* Je rajoute un espacement autour de mes articles */
+    /* margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: auto; 
+    Les 4 lignes ci dessus sont équivalente à la ligne ci dessous*/
+    margin: 20px auto 20px 5px;
+}
+h1{
+    font-size: 42px;
+    text-align: center;
+    padding: 0.8em 0;
+    /* 1em signifi 1 fois la taille de la police d'écriture de l'élément. */
+}
+p{
+    font-size: 24px;
+}
+p::first-letter{
+    /* 1rem représente la taille de la police racine, en gros celle du navigateur.
+    et n'est donc pas dépendant de la taille que vous donner à la police de l'élément */
+    font-size: 2rem;
+}
+footer{
+    background-color: chartreuse;
+    /* paramètre la hauteur */
+    min-height: 50px;
+}
+li{
+    /* Je retire la décoration de ma liste */
+    list-style: none;
+    display: inline-block;
+    background-color: aqua;
+    /* J'indique à mon li que sa largeur et sa hauteur doivent être égale */
+    aspect-ratio: 1/1;
+    /* permet d'arrondir les angles de notre élément. avec 50% on obtient un cercle */
+    border-radius: 50%;
+    padding: 1rem 5px;
+    margin-left: 15%;
+}
+div{
+    /* 40vw signifie 40% de la largeur du viewport */
+    width: 40vw;
+    /* 90vh signifie 90% de la hauteur du viewport */
+    max-height: 90vh;
+    /* Si notre block à une largueur fixé, alors une margin auto à gauche et à droite
+    peut permettre de le centrer. */
+    margin: 5px auto;
+}
+img{
+    max-width: 90%;
+    /* Permet d'indique comment l'image doit remplir son parent */
+    object-fit: cover;
+}

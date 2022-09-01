@@ -1,0 +1,83 @@
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul{
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    transform: translate(-50%, -50%);
+    transition: left 1s;
+}
+li{
+    margin: 1rem 0;
+    display: inline-block;
+}
+button{
+    font-size: 3rem;
+    aspect-ratio: 1/1;
+}
+li:nth-child(1) button{
+    background-color: chartreuse;
+    /* transition property permet d'indiquer sur quelle propriété on souhaite activer
+    la transition */
+    transition-property: background-color, transform;
+    /* transition duration permet d'indiquer la durée de la transition */
+    transition-duration: 1s, 2s;
+    /* transition delay permet de mettre un temps d'attente avant l'activation de 
+    la transition */
+    transition-delay: 0.5s;
+    /* transition timing function permet soit avec des mots clefs (ease, ease-in, 
+    ease-out, ease-in-out, linear) soit avec des courbes de bezier ( cubic-bezier() ) 
+    de choisir le rythme qu'adoptera la transition (plus rapide au début puis ralenti 
+    par exemple) */
+    transition-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+li:nth-child(1) button:hover{
+    background-color: darkviolet;
+    transform: rotate(180deg);
+}
+
+li:nth-child(2) button{
+    /* avec le mot clef all, toute les propriété animable seront prise en compte */
+    transition-property: all;
+    transition-duration: 3s;
+    /* Steps permet une transition par étape et non fluide. */
+    transition-timing-function: steps(5, jump-start);
+}
+li:nth-child(2) button:hover{
+    border-radius: 50%;
+}
+li:nth-child(3) button{
+    /* transition permet de regrouper toute les propriétés de transition en une seule
+    si une seule durée est donné ce sera la durée, et si une seconde est donnée, le délai */
+    transition: all 1s 0.5s linear;
+}
+li:nth-child(3) button:active{
+    /* box-shadow permet d'ajouter une ombre à un block. 
+    le premier paramètre est sa position x (offset-x) 
+    le second sa position y
+    le troisième le blur-radius est le flou que prendra l'ombre
+    le quatrième est le spread-radius, qui permet à l'ombre de s'étaller
+    et le dernier la couleur de l'ombre. 
+    le blur-radius et le spread-radius sont optionnels*/
+    box-shadow: 10px 50px 10px 50px red;
+}
+li:nth-child(4) button{
+    transition: all 1s linear;
+}
+li:nth-child(4):hover button{
+    /* En plaçant le hover sur l'élément parent et non sur la cible du selecteur
+    le changement de taille (ou mouvement) du bouton ne le fera pas quitter le 
+    survol de la souris */
+    transform: scale(0.5);
+    /* scale permet d'aggrandir ou rétrécir un élément. 0.5 le divisera par deux
+    alors que 2 doublera sa taille */
+}
+input#burger{
+    display: none;
+}
+input#burger:checked ~ ul{
+    left: 50%;
+}
